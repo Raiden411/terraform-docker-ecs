@@ -4,7 +4,7 @@
 ##
 name_prefix = "aho-sf-vwis"
 aws_region = "eu-west-1"
-ecs_image_id.eu-west-1 = "ecs-optimized"
+ecs_image_id.eu-west-1 = "ami-64c4871d"
 count_jks_agent = 2
 desired_capacity_on_demand = 2
 ec2_key_name = "aho-sf-vwis"
