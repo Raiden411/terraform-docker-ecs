@@ -4,7 +4,7 @@ resource "aws_launch_configuration" "jks_on_demand" {
   iam_instance_profile        = "${var.ecs_instance_profile}"
   user_data                   = "${data.template_file.autoscaling_user_data.rendered}"
   key_name                    = "${var.ec2_key_name}"
-  security_groups             = ["${var.sg_webapp_instances_id}"]
+  security_groups             = ["${var.sg_jks_sa_id}"]
   associate_public_ip_address = true
 
   lifecycle {
