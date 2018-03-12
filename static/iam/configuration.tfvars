@@ -1,2 +1,2 @@
-name_prefix = "tutorial-test"
-aws_region = "ap-northeast-1"
+name_prefix = "aho-vwis-dev"
+aws_region = "eu-west-1"

@@ -6,13 +6,14 @@
  */
 
 resource "aws_iam_instance_profile" "ecs_instance_profile" {
-    name = "${var.name_prefix}_ecs_instance_profile"
-    role = "${aws_iam_role.ecs_instance_role.name}"
+  name = "${var.name_prefix}_ecs_instance_profile"
+  role = "${aws_iam_role.ecs_instance_role.name}"
 }
 
 resource "aws_iam_role" "ecs_instance_role" {
-    name = "${var.name_prefix}_ecs_instance_role"
-    assume_role_policy = <<EOF
+  name = "${var.name_prefix}_ecs_instance_role"
+
+  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -30,9 +31,10 @@ EOF
 }
 
 resource "aws_iam_role_policy" "ecs_instance_role_policy" {
-    name = "${var.name_prefix}_ecs_instance_role_policy"
-    role = "${aws_iam_role.ecs_instance_role.id}"
-    policy = <<EOF
+  name = "${var.name_prefix}_ecs_instance_role_policy"
+  role = "${aws_iam_role.ecs_instance_role.id}"
+
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -62,8 +64,9 @@ EOF
  */
 
 resource "aws_iam_role" "ecs_service_role" {
-    name = "${var.name_prefix}_ecs_service_role"
-    assume_role_policy = <<EOF
+  name = "${var.name_prefix}_ecs_service_role"
+
+  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -81,9 +84,10 @@ EOF
 }
 
 resource "aws_iam_role_policy" "ecs_service_role_policy" {
-    name = "${var.name_prefix}_ecs_service_role"
-    role = "${aws_iam_role.ecs_service_role.id}"
-    policy = <<EOF
+  name = "${var.name_prefix}_ecs_service_role"
+  role = "${aws_iam_role.ecs_service_role.id}"
+
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
