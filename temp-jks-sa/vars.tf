@@ -62,9 +62,9 @@ variable "minimum_healthy_percent_webapp" {
 }
 
 /* Consume common outputs */
-variable "sg_webapp_albs_id" {}
+#Todelete: variable "sg_webapp_albs_id" {}
 variable "sg_jks_sa_id" {}
-variable "sg_webapp_instances_id" {}
+#Todelete: variable "sg_webapp_instances_id" {}
 variable "vpc_id" {}
 variable "subnet_ids" {}
 
