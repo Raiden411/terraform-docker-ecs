@@ -11,3 +11,12 @@ yum update -y
 #yum install jenkins -y
 #yum install maven -y
 
+yum install wget -y
+wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+yum install jenkins java nginx -y
+service jenkins start 
+service nginx start
+chkconfig jenkins on
+chkconfig nginx on
+
