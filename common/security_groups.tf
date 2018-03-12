@@ -26,6 +26,19 @@ resource "aws_security_group" "webapp_albs" {
 }
 
 /**
+  * We will allow trafic from JKS Master and outgoing connections
+  */
+resource "aws_security_group" "jks_agent" {
+  name        = "${var.name_prefix}-jks_agent"
+  vpc_id      = "${aws_vpc.main.id}"
+  description = "Security group for JKS agents"
+
+  tags {
+    Name = "${var.name_prefix}-jks_agent"
+  }
+}
+
+/**
   * Security group for each jks stand alone
   */
 
@@ -38,7 +51,6 @@ resource "aws_security_group" "jks_sa" {
     Name = "${var.name_prefix}-jks-sa"
   }
 }
-
 
 /**
   * Security group for each instances
@@ -109,7 +121,6 @@ resource "aws_security_group_rule" "allow_ssh_from_internet_to_jks-sa" {
   security_group_id = "${aws_security_group.jks_sa.id}"
 }
 
-
 resource "aws_security_group_rule" "allow_http_from_internet_to_jks-sa" {
   type        = "ingress"
   from_port   = 80
@@ -131,3 +142,34 @@ resource "aws_security_group_rule" "allow_all_egress_to_jks-sa" {
   security_group_id = "${aws_security_group.jks_sa.id}"
 }
 
+
+
+resource "aws_security_group_rule" "allow_ssh_from_internet_to_jks-agent" {
+  type        = "ingress"
+  from_port   = 22
+  to_port     = 22
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+
+  security_group_id = "${aws_security_group.jks_agent.id}"
+}
+
+resource "aws_security_group_rule" "allow_http_from_internet_to_jks-agent" {
+  type        = "ingress"
+  from_port   = 5000
+  to_port     = 5000
+  protocol    = "tcp"
+  source_security_group_id = "${aws_security_group.jks_sa.id}"
+  security_group_id = "${aws_security_group.jks_agent.id}"
+}
+
+/* Allow all outgoing connections */
+resource "aws_security_group_rule" "allow_all_egress_to_jks-agent" {
+  type        = "egress"
+  from_port   = 0
+  to_port     = 0
+  protocol    = "-1"
+  cidr_blocks = ["0.0.0.0/0"]
+
+  security_group_id = "${aws_security_group.jks_agent.id}"
+}

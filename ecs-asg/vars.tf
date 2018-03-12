@@ -1,16 +1,16 @@
 /* Terraform constraints */
 terraform {
-    required_version = ">= 0.11, < 0.12"
+  required_version = ">= 0.11, < 0.12"
 }
 
 variable "name_prefix" {
-    default = "tutorial"
-    description = "Name prefix for this environment."
+  default     = "tutorial"
+  description = "Name prefix for this environment."
 }
 
 variable "aws_region" {
-    default = "ap-northeast-1"
-    description = "Determine AWS region endpoint to access."
+  default     = "ap-northeast-1"
+  description = "Determine AWS region endpoint to access."
 }
 
 /* ECS optimized AMIs per region */
@@ -26,52 +26,53 @@ variable "ecs_image_id" {
   }
 }
 
-variable "webapp_docker_image_name" {
-    default = "training/webapp_docker_image"
-    description = "Docker image from Docker Hub"
+variable "jks_agent_docker_image_name" {
+  default     = "training/jks_agent_docker_image"
+  description = "Docker image from Docker Hub"
 }
 
-variable "webapp_docker_image_tag" {
-    default = "latest"
-    description = "Docker image version to pull (from tag)"
+variable "jks_agent_docker_image_tag" {
+  default     = "latest"
+  description = "Docker image version to pull (from tag)"
 }
 
-variable "count_webapp" {
-    default = 2
-    description = "Number of webapp tasks to run"
+variable "count_jks_agent" {
+  default     = 2
+  description = "Number of jks_agent tasks to run"
 }
 
 variable "desired_capacity_on_demand" {
-    default = 2
-    description = "Number of instance to run"
+  default     = 2
+  description = "Number of instance to run"
 }
 
 variable "ec2_key_name" {
-    default = ""
-    description = "EC2 key name to SSH to the instance, make sure that you have this key if you want to access your instance via SSH"
+  default     = ""
+  description = "EC2 key name to SSH to the instance, make sure that you have this key if you want to access your instance via SSH"
 }
 
 variable "instance_type" {
-    default = "t2.micro"
-    description = "EC2 instance type to use"
+  default     = "t2.micro"
+  description = "EC2 instance type to use"
 }
 
-variable "minimum_healthy_percent_webapp" {
-    default = 50
-    description = "ECS minimum_healthy_percent configuration, set it lower than 100 to allow rolling update without adding new instances"
+variable "minimum_healthy_percent_jks_agent" {
+  default     = 50
+  description = "ECS minimum_healthy_percent configuration, set it lower than 100 to allow rolling update without adding new instances"
 }
 
 /* Consume common outputs */
-variable "sg_webapp_albs_id" {}
-variable "sg_webapp_instances_id" {}
+variable "sg_jks_agent_instances_id" {}
+
 variable "vpc_id" {}
 variable "subnet_ids" {}
 
 /* Consume static outputs */
 variable "ecs_instance_profile" {}
+
 variable "ecs_service_role" {}
 
 /* Region settings for AWS provider */
 provider "aws" {
-    region = "${var.aws_region}"
+  region = "${var.aws_region}"
 }

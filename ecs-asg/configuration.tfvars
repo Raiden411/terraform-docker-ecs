@@ -22,8 +22,7 @@ minimum_healthy_percent_jks_agent = 50
 ##
 # These variables are required, please fill it out with your environment outputs
 ##
-sg_webapp_albs_id = "sg-910b4deb"
-sg_webapp_instances_id = "sg-ea0b4d90"
+sg_jks_agent_instances_id = "sg-ea0b4d90"
 sg_jks_sa_id = "sg-0062247a"
 vpc_id = "vpc-7b853a1d"
 subnet_ids = "subnet-c82a2293,subnet-c39a54a5"
