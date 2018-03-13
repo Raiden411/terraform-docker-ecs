@@ -1,0 +1,2 @@
+Automatiser l'installation de JKS
+Automatiser la création du Bucket S3 pour la création des remote tfstate
