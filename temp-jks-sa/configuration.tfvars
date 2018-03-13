@@ -12,10 +12,8 @@ desired_capacity_on_demand = 1
 ##
 # These variables are required, please fill it out with your environment outputs
 ##
-#sg_webapp_albs_id = "sg-910b4deb"
-#sg_webapp_instances_id = "sg-ea0b4d90"
-sg_jks_sa_id = "sg-0062247a"
-vpc_id = "vpc-7b853a1d"
+sg_jks_sa_id = "${data.terraform_remote_state.aws_security_group.jks_sa}"
+vpc_id = "${data.terraform_remote_state.aws_vpc.main}"
 subnet_ids = "subnet-c82a2293,subnet-c39a54a5"
 
 ecs_instance_profile = "arn:aws:iam::235960612000:instance-profile/aho-vwis-dev_ecs_instance_profile"
