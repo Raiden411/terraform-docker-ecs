@@ -6,7 +6,7 @@ resource "aws_vpc" "main" {
   enable_dns_hostnames = true
 
   tags {
-    Name = "${var.name_prefix}-webapp"
+    Name = "${var.name_prefix}-aho-sf-vwis"
   }
 }
 
@@ -14,7 +14,7 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = "${aws_vpc.main.id}"
 
   tags {
-    Name = "${var.name_prefix}-webapp"
+    Name = "${var.name_prefix}-aho-sf-vwis"
   }
 }
 
@@ -27,7 +27,7 @@ resource "aws_route_table" "r" {
   }
 
   tags {
-    Name = "${var.name_prefix}-webapp"
+    Name = "${var.name_prefix}-aho-sf-vwis"
   }
 }
 
@@ -40,7 +40,7 @@ resource "aws_vpc_dhcp_options" "dns_resolver" {
   domain_name_servers = ["AmazonProvidedDNS"]
 
   tags {
-    Name = "${var.name_prefix}-webapp"
+    Name = "${var.name_prefix}-aho-sf-vwis"
   }
 }
 
@@ -58,6 +58,6 @@ resource "aws_subnet" "subnet" {
   availability_zone       = "${var.aws_region}${element(split(",", var.subnet_azs), count.index)}"
 
   tags {
-    Name = "${var.name_prefix}-webapp"
+    Name = "${var.name_prefix}-aho-sf-vwis"
   }
 }
