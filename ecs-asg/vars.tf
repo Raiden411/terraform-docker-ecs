@@ -61,17 +61,6 @@ variable "minimum_healthy_percent_jks_agent" {
   description = "ECS minimum_healthy_percent configuration, set it lower than 100 to allow rolling update without adding new instances"
 }
 
-/* Consume common outputs */
-variable "sg_jks_agent_instances_id" {}
-
-variable "vpc_id" {}
-variable "subnet_ids" {}
-
-/* Consume static outputs */
-variable "ecs_instance_profile" {}
-
-variable "ecs_service_role" {}
-
 /* Region settings for AWS provider */
 provider "aws" {
   region = "${var.aws_region}"

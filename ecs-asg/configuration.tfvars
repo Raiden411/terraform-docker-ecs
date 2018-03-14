@@ -22,11 +22,11 @@ minimum_healthy_percent_jks_agent = 50
 ##
 # These variables are required, please fill it out with your environment outputs
 ##
-sg_jks_agent_instances_id = "sg-2f206155"
-sg_jks_sa_id = "sg-0062247a"
-vpc_id = "vpc-7b853a1d"
-subnet_ids = "subnet-c82a2293,subnet-c39a54a5"
+#sg_jks_agent_instances_id = "sg-2f206155"
+#sg_jks_sa_id = "sg-0062247a"
+#vpc_id = "vpc-7b853a1d"
+#subnet_ids = "subnet-c82a2293,subnet-c39a54a5"
 
-ecs_instance_profile = "arn:aws:iam::235960612000:instance-profile/aho-vwis-dev_ecs_instance_profile"
-ecs_service_role = "aho-vwis-dev_ecs_service_role"
+#ecs_instance_profile = "arn:aws:iam::235960612000:instance-profile/aho-vwis-dev_ecs_instance_profile"
+#ecs_service_role = "aho-vwis-dev_ecs_service_role"
 
