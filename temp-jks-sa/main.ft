@@ -1,8 +1,0 @@
-data "terraform_remote_state" "common" {
-  backend = "s3"
-  config {
-    bucket = "aho-sf-vwis-tfstate"
-    key    = "common/terraform.tfstate"
-    region = "eu-west-1"
-  }
-}
